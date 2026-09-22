@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semester 1 — F.R.E.T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a href="index.html" class="mark"><span class="led"></span><span>F.R.E.T</span></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="semester-1.html" class="active">Semester 1</a>
+      <a href="semester-2.html">Semester 2</a>
+      <a href="materials.html">Additional Materials</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="page-header">
+    <h1 class="display">Semester 1</h1>
+    <p>Documents and media from the first semester of the project.</p>
+  </section>
+
+  <section>
+    <ul class="deliv-list" id="sd1-list"></ul>
+  </section>
+
+  <footer>
+    F.R.E.T — a student-built engineering project. Site last updated <span id="last-updated"></span>.
+  </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+/* To mark something as done: change status to "complete", set `date`
+   to when it was finished, and set `href` — a file path for
+   documents/slides, or a normal YouTube watch link for videos (it's
+   converted to an embedded player automatically). */
+const SEMESTER_1_ITEMS = [
+  { id:"dac",       kind:"doc",   title:"Divide and Conquer Document",
+    status:"complete", date:"Completed — Week 4",
+    href:"documents/divide-and-conquer.pdf" },
+  { id:"midterm",   kind:"doc",   title:"Midterm Milestone Report",
+    status:"upcoming", date:"Expected — mid-semester", href:null },
+  { id:"final-report", kind:"doc", title:"Semester 1 Final Report",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+  { id:"mini-demo", kind:"video", title:"Mini Demo Video",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+];
+
+renderList("sd1-list", SEMESTER_1_ITEMS);
+setFooterDate();
+</script>
+</body>
+</html>

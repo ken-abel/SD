@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semester 2 — F.R.E.T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a href="index.html" class="mark"><span class="led"></span><span>F.R.E.T</span></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="semester-1.html">Semester 1</a>
+      <a href="semester-2.html" class="active">Semester 2</a>
+      <a href="materials.html">Additional Materials</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="page-header">
+    <h1 class="display">Semester 2</h1>
+    <p>Documents and media from the second semester of the project.</p>
+  </section>
+
+  <section>
+    <ul class="deliv-list" id="sd2-list"></ul>
+  </section>
+
+  <footer>
+    F.R.E.T — a student-built engineering project. Site last updated <span id="last-updated"></span>.
+  </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+/* Same pattern as Semester 1: flip status to "complete", add a date,
+   and set href (file path, or a YouTube watch link for videos). */
+const SEMESTER_2_ITEMS = [
+  { id:"cdr-video",    kind:"video",  title:"CDR Presentation Video",
+    status:"upcoming", date:"Expected — early semester", href:null },
+  { id:"cdr-slides",   kind:"slides", title:"CDR Presentation Slides",
+    status:"upcoming", date:"Expected — early semester", href:null },
+  { id:"midterm-demo", kind:"video",  title:"Midterm Demonstration Video",
+    status:"upcoming", date:"Expected — mid-semester", href:null },
+  { id:"conf-paper",   kind:"doc",    title:"8-Page Conference Paper",
+    status:"upcoming", date:"Expected — mid/late semester", href:null },
+  { id:"final-report", kind:"doc",    title:"Semester 2 Final Report",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+  { id:"final-video",  kind:"video",  title:"Final Presentation Video",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+  { id:"final-slides", kind:"slides", title:"Final Presentation Slides",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+  { id:"final-demo",   kind:"video",  title:"Final Demonstration Video",
+    status:"upcoming", date:"Expected — end of semester", href:null },
+];
+
+renderList("sd2-list", SEMESTER_2_ITEMS);
+setFooterDate();
+</script>
+</body>
+</html>
