@@ -1,78 +1,1307 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F.R.E.T Landing Page</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+```
+<title>F.R.E.T | Flexible Real-Time Effects Terminal</title>
+
+<style>
+
+    /* ==============================
+       GLOBAL STYLES
+    ============================== */
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f8;
+        color: #222;
+        line-height: 1.6;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    section {
+        scroll-margin-top: 90px;
+    }
+
+
+    /* ==============================
+       NAVIGATION BAR
+    ============================== */
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        background: rgba(255, 255, 255, 0.96);
+        border-bottom: 1px solid #e5e7eb;
+
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar {
+        max-width: 1300px;
+        margin: auto;
+
+        height: 82px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 35px;
+    }
+
+    /* Temporary logo */
+
+    .logo {
+        width: 170px;
+        height: 48px;
+
+        border: 2px solid #222;
+        border-radius: 6px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 1.15rem;
+        font-weight: bold;
+        letter-spacing: 3px;
+
+        color: #222;
+    }
+
+    .logo-placeholder {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        color: #666;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+
+        list-style: none;
+    }
+
+    .nav-links a {
+        position: relative;
+
+        font-size: 0.85rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+
+        color: #222;
+
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+
+        width: 0;
+        height: 2px;
+
+        background: #2563eb;
+
+        transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+        color: #2563eb;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+
+    /* ==============================
+       HERO SECTION
+    ============================== */
+
+    .hero {
+        min-height: calc(100vh - 82px);
+
+        display: flex;
+        align-items: center;
+
+        background: #ffffff;
+
+        padding: 80px 35px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 1300px;
+
+        margin: auto;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+
+        align-items: center;
+    }
+
+    .hero-text {
+        max-width: 650px;
+    }
+
+    .eyebrow {
+        display: inline-block;
+
+        margin-bottom: 18px;
+
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+
+        color: #2563eb;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.5rem, 7vw, 7rem);
+
+        line-height: 0.95;
+
+        letter-spacing: -4px;
+
+        margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+        color: #2563eb;
+    }
+
+    .hero-description {
+        max-width: 600px;
+
+        font-size: 1.15rem;
+        color: #666;
+
+        margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        display: inline-block;
+
+        padding: 15px 28px;
+
+        border-radius: 6px;
+
+        font-size: 0.9rem;
+        font-weight: bold;
+
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        transition: all 0.25s ease;
+    }
+
+    .primary-button {
+        background: #2563eb;
+        color: white;
+    }
+
+    .primary-button:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+    }
+
+    .secondary-button {
+        border: 1px solid #222;
+        color: #222;
+    }
+
+    .secondary-button:hover {
+        background: #222;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+
+    /* ==============================
+       HERO IMAGE PLACEHOLDER
+    ============================== */
+
+    .hero-image {
+        min-height: 500px;
+
+        background: #f4f6f8;
+
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #e5e7eb;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-image::before {
+        content: "";
+
+        position: absolute;
+
+        width: 350px;
+        height: 350px;
+
+        border-radius: 50%;
+
+        background: rgba(37, 99, 235, 0.06);
+    }
+
+    .image-placeholder {
+        position: relative;
+        z-index: 1;
+
+        text-align: center;
+
+        color: #777;
+    }
+
+    .image-placeholder strong {
+        display: block;
+
+        font-size: 1.2rem;
+
+        margin-bottom: 8px;
+
+        color: #444;
+    }
+
+    .image-placeholder p {
+        font-size: 0.9rem;
+    }
+
+
+    /* ==============================
+       ABOUT SECTION
+    ============================== */
+
+    .about {
+        background: #f4f6f8;
+
+        padding: 120px 35px;
+    }
+
+    .section-container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .section-heading {
+        margin-bottom: 55px;
+    }
+
+    .section-label {
+        display: block;
+
+        margin-bottom: 12px;
+
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 3px;
+
+        text-transform: uppercase;
+
+        color: #2563eb;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+        line-height: 1;
+
+        letter-spacing: -2px;
+    }
+
+    .about-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 70px;
+
+        align-items: center;
+    }
+
+    .about-text p {
+        color: #666;
+
+        font-size: 1.05rem;
+
+        margin-bottom: 20px;
+    }
+
+    .about-image {
+        min-height: 400px;
+
+        background: white;
+
+        border-radius: 10px;
+
+        border: 1px solid #e5e7eb;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #777;
+    }
+
+
+    /* ==============================
+       FEATURES
+    ============================== */
+
+    .features {
+        background: white;
+
+        padding: 120px 35px;
+    }
+
+    .feature-grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 25px;
+    }
+
+    .feature-card {
+        padding: 35px;
+
+        background: #f4f6f8;
+
+        border-radius: 8px;
+
+        transition: transform 0.25s ease,
+                    box-shadow 0.25s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-number {
+        font-size: 0.8rem;
+
+        font-weight: bold;
+
+        color: #2563eb;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 25px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+
+        margin-bottom: 12px;
+    }
+
+    .feature-card p {
+        color: #666;
+    }
+
+
+    /* ==============================
+       DOCUMENTS
+    ============================== */
+
+    .documents {
+        background: #222;
+
+        color: white;
+
+        padding: 120px 35px;
+    }
+
+    .documents .section-label {
+        color: #60a5fa;
+    }
+
+    .documents .section-heading h2 {
+        color: white;
+    }
+
+    .document-box {
+        max-width: 900px;
+
+        background: #ffffff;
+
+        color: #222;
+
+        padding: 45px;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 30px;
+    }
+
+    .document-info h3 {
+        font-size: 1.5rem;
+
+        margin-bottom: 8px;
+    }
+
+    .document-info p {
+        color: #666;
+    }
+
+    .download-button {
+        flex-shrink: 0;
+
+        display: inline-block;
+
+        padding: 15px 25px;
+
+        background: #2563eb;
+
+        color: white;
+
+        border-radius: 6px;
+
+        font-weight: bold;
+
+        font-size: 0.85rem;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+
+        transition: background 0.2s ease,
+                    transform 0.2s ease;
+    }
+
+    .download-button:hover {
+        background: #1d4ed8;
+
+        transform: translateY(-2px);
+    }
+
+
+    /* ==============================
+       DEMO SECTION
+    ============================== */
+
+    .demo {
+        background: #f4f6f8;
+
+        padding: 120px 35px;
+    }
+
+    .video-placeholder {
+        max-width: 1000px;
+
+        aspect-ratio: 16 / 9;
+
+        margin: auto;
+
+        background: #222;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+    }
+
+    .video-placeholder-content {
+        padding: 30px;
+    }
+
+    .play-button {
+        width: 75px;
+        height: 75px;
+
+        margin: 0 auto 20px;
+
+        border-radius: 50%;
+
+        background: #2563eb;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 1.7rem;
+
+        padding-left: 5px;
+    }
+
+    .video-placeholder h3 {
+        margin-bottom: 8px;
+
+        font-size: 1.5rem;
+    }
+
+    .video-placeholder p {
+        color: #bbb;
+    }
+
+
+    /* ==============================
+       PRESENTATION
+    ============================== */
+
+    .presentation {
+        background: white;
+
+        padding: 120px 35px;
+    }
+
+    .presentation-box {
+        min-height: 450px;
+
+        background: #f4f6f8;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .presentation-content {
+        max-width: 600px;
+
+        padding: 30px;
+    }
+
+    .presentation-content h3 {
+        font-size: 2rem;
+
+        margin-bottom: 15px;
+    }
+
+    .presentation-content p {
+        color: #666;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+        background: #f4f6f8;
+
+        border-top: 1px solid #e5e7eb;
+
+        padding: 45px 35px;
+
+        text-align: center;
+    }
+
+    footer p {
+        color: #777;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ==============================
+       RESPONSIVE DESIGN
+    ============================== */
+
+    @media (max-width: 900px) {
+
+        .navbar {
+            padding: 0 20px;
         }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+        .nav-links {
+            gap: 18px;
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+        }
+
+        .hero-content {
+            grid-template-columns: 1fr;
+
+            gap: 50px;
+        }
+
+        .hero {
+            padding-top: 60px;
+        }
+
+        .hero-image {
+            min-height: 400px;
+        }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .document-box {
+            flex-direction: column;
+
+            align-items: flex-start;
+        }
+    }
+
+
+    @media (max-width: 600px) {
+
+        .navbar {
+            height: auto;
+
+            min-height: 75px;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            padding: 20px;
+        }
+
+        .nav-links {
+            gap: 15px;
+
+            flex-wrap: wrap;
+
             justify-content: center;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f6f8;
-            color: #222;
         }
 
-        .container {
+        .hero {
+            min-height: auto;
+
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+
+            letter-spacing: -3px;
+        }
+
+        .about,
+        .features,
+        .documents,
+        .demo,
+        .presentation {
+            padding: 80px 20px;
+        }
+
+        .section-heading h2 {
+            font-size: 3rem;
+        }
+
+        .document-box {
+            padding: 30px;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+
+            align-items: stretch;
+        }
+
+        .primary-button,
+        .secondary-button {
             text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            width: 90%;
         }
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
+</style>
+```
 
-        p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .download-button {
-            display: inline-block;
-            padding: 14px 28px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background 0.2s ease;
-        }
-
-        .download-button:hover {
-            background: #1d4ed8;
-        }
-    </style>
 </head>
 
 <body>
-    <main class="container">
-        <h1>F.R.E.T Landing Page</h1>
-        <p>Click below to access the Divide and Conquer document, which serves as a project proposal.</p>
 
-        <!-- Replace "document.docx" with the actual filename -->
-        <a
-            class="download-button"
-            href="Divide and Conquer.pdf"
-            download
-        >
-            Download Document
+```
+<!-- ==============================
+     NAVIGATION
+============================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <!-- Replace this with your actual logo later -->
+        <a href="#home" class="logo">
+            <span class="logo-placeholder">F.R.E.T LOGO</span>
         </a>
-    </main>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#about">About Us</a>
+            </li>
+
+            <li>
+                <a href="#documents">Documents</a>
+            </li>
+
+            <li>
+                <a href="#demo">Demo</a>
+            </li>
+
+            <li>
+                <a href="#presentation">Presentation</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<main id="home">
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <span class="eyebrow">
+                    Flexible Real-Time Effects Terminal
+                </span>
+
+                <h1>
+                    F<span>.</span>R<span>.</span>E<span>.</span>T
+                </h1>
+
+                <p class="hero-description">
+                    A programmable multi-effect guitar pedal designed
+                    to combine flexibility, customization, and high-quality
+                    digital audio into one powerful platform.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#about" class="primary-button">
+                        Explore F.R.E.T
+                    </a>
+
+                    <a href="#demo" class="secondary-button">
+                        View Demo
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Replace this entire div with your pedal image later -->
+
+            <div class="hero-image">
+
+                <div class="image-placeholder">
+
+                    <strong>
+                        F.R.E.T PRODUCT IMAGE
+                    </strong>
+
+                    <p>
+                        Space reserved for your pedal render
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ABOUT US
+    ============================== -->
+
+    <section class="about" id="about">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    About Us
+                </span>
+
+                <h2>
+                    One pedal.<br>
+                    Endless possibilities.
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        F.R.E.T (Flexible Real-Time Effects Terminal)
+                        is a programmable multi-effect guitar pedal
+                        designed to give musicians access to multiple
+                        effects and tone customizations within a single
+                        unit.
+                    </p>
+
+                    <p>
+                        Instead of purchasing and connecting multiple
+                        traditional pedals, F.R.E.T combines a variety
+                        of digital effects into one flexible platform.
+                        Users can create their own signal chains and
+                        customize their sound to fit their individual
+                        playing style.
+                    </p>
+
+                    <p>
+                        The project is designed with an open-source
+                        philosophy, allowing users and developers to
+                        experiment with the software and create their
+                        own effects and features.
+                    </p>
+
+                </div>
+
+
+                <!-- Future project image -->
+
+                <div class="about-image">
+
+                    <div class="image-placeholder">
+
+                        <strong>
+                            PROJECT IMAGE
+                        </strong>
+
+                        <p>
+                            Space reserved for F.R.E.T photography
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         FEATURES
+    ============================== -->
+
+    <section class="features">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    The Concept
+                </span>
+
+                <h2>
+                    Built for<br>
+                    creativity.
+                </h2>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Multiple Effects
+                    </h3>
+
+                    <p>
+                        Access effects such as distortion,
+                        reverb, delay, compression, and other
+                        digital effects within one platform.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Custom Signal Chains
+                    </h3>
+
+                    <p>
+                        Arrange and customize the order of effects
+                        to create unique signal paths and personalized
+                        tones.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Open Source
+                    </h3>
+
+                    <p>
+                        The software architecture is designed to
+                        allow users and developers to experiment,
+                        modify, and create new effects.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Real-Time Processing
+                    </h3>
+
+                    <p>
+                        Designed around real-time digital audio
+                        processing for responsive performance while
+                        playing guitar.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        05
+                    </div>
+
+                    <h3>
+                        Hands-On Control
+                    </h3>
+
+                    <p>
+                        Footswitches and rotary controls provide
+                        direct access to effects, parameters,
+                        navigation, and volume.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        06
+                    </div>
+
+                    <h3>
+                        Expandable Platform
+                    </h3>
+
+                    <p>
+                        F.R.E.T is designed with future hardware
+                        and software expansion in mind as the project
+                        continues to develop.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         DOCUMENTS
+    ============================== -->
+
+    <section class="documents" id="documents">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Documents
+                </span>
+
+                <h2>
+                    Project<br>
+                    documentation.
+                </h2>
+
+            </div>
+
+
+            <div class="document-box">
+
+                <div class="document-info">
+
+                    <h3>
+                        F.R.E.T Project Proposal
+                    </h3>
+
+                    <p>
+                        View or download the Divide and Conquer
+                        project proposal containing the project's
+                        goals, design, requirements, and development
+                        information.
+                    </p>
+
+                </div>
+
+
+                <!-- Make sure the PDF has this exact filename -->
+
+                <a
+                    class="download-button"
+                    href="Divide and Conquer.pdf"
+                    download
+                >
+                    Download PDF
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         DEMO
+    ============================== -->
+
+    <section class="demo" id="demo">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Demo
+                </span>
+
+                <h2>
+                    Hear F.R.E.T<br>
+                    in action.
+                </h2>
+
+            </div>
+
+
+            <!--
+                Replace this placeholder with your YouTube
+                iframe when your demo video is available.
+
+                Example:
+
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="YOUR-YOUTUBE-LINK"
+                    title="F.R.E.T Demo"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            -->
+
+            <div class="video-placeholder">
+
+                <div class="video-placeholder-content">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                    <h3>
+                        F.R.E.T Demonstration
+                    </h3>
+
+                    <p>
+                        Video demonstration coming soon.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PRESENTATION
+    ============================== -->
+
+    <section class="presentation" id="presentation">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Presentation
+                </span>
+
+                <h2>
+                    Project<br>
+                    presentation.
+                </h2>
+
+            </div>
+
+
+            <div class="presentation-box">
+
+                <div class="presentation-content">
+
+                    <h3>
+                        F.R.E.T Project Presentation
+                    </h3>
+
+                    <p>
+                        View the project presentation to learn more
+                        about the design process, hardware, software,
+                        functionality, and development of F.R.E.T.
+                    </p>
+
+
+                    <!--
+                        Replace "#" with your presentation link
+                        when it is available.
+                    -->
+
+                    <a
+                        href="#"
+                        class="primary-button"
+                    >
+                        View Presentation
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer>
+
+    <p>
+        © 2026 F.R.E.T — Flexible Real-Time Effects Terminal
+    </p>
+
+</footer>
+```
+
 </body>
 </html>
