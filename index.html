@@ -25,7 +25,7 @@
 
 <div class="wrap">
   <section class="hero">
-    <h1 class="display">F.R.E.T</h1>
+    <h1><img class="hero-logo" src="images/fret_logo.png" alt="F.R.E.T"></h1>
     <div class="full-name">Flexible Real-Time Effects Terminal</div>
     <p class="tagline">A digital signal processing guitar effects pedal, designed and built by a three-person team of Electrical Engineering students over two semesters.</p>
   </section>
@@ -47,7 +47,12 @@
 
     <div class="role-block">
       <h3 class="block-title">Group members</h3>
-      <ul class="role-list" id="members-list"></ul>
+      <div class="member-list" id="members-list"></div>
+    </div>
+
+    <div class="role-block" id="sponsor-block" hidden>
+      <h3 class="block-title">Sponsor</h3>
+      <div class="sponsor-box" id="sponsor-info"></div>
     </div>
 
     <div class="role-block">
@@ -73,10 +78,18 @@
    swap out the placeholders below with the real names. */
 
 const MEMBERS = [
-  { name: "Kenneth Abel", role: "Primary Role: Software. Secondary Roles: MCU/Peripheral Integration, Website." },
-  { name: "Ngoc Nguyen", role: "Primary Role: Analog Signal Chain. Secondary Roles: CAD, PCB Design." },
-  { name: "Benjamin Vargas", role: "Primary Role: Power Supply. Secondary Role: Protective Circuitry." },
+  { name: "Kenneth Abel", role: "Primary Role: Software. Secondary Roles: MCU/Peripheral Integration, Website.", photo: "images/Kenneth Headshot Zoomed.jpg", bio: "Add a two to three sentence bio." },
+  { name: "Ngoc Nguyen", role: "Primary Role: Analog Signal Chain. Secondary Roles: CAD, PCB Design.", photo: "images/Nghi Headshot.png", bio: "Add a two to three sentence bio." },
+  { name: "Benjamin Vargas", role: "Primary Role: Power Supply. Secondary Role: Protective Circuitry.", photo: "images/Benjamin Headshot.png", bio: "Add a two to three sentence bio." },
 ];
+
+// Set show to false to hide the sponsor section entirely.
+const SPONSOR = {
+  show: false,
+  org: "Add sponsor organization",
+  contactName: "Add contact name",
+  contactEmail: "Add contact email",
+};
 
 const ADVISORS = [
   { name: "Dr. Sonali Das", role: "UCF ECE Lecturer" },
@@ -101,7 +114,42 @@ function fillRoleList(containerId, people){
   });
 }
 
-fillRoleList("members-list", MEMBERS);
+function fillRoleList(containerId, people){
+  const el = document.getElementById(containerId);
+  people.forEach(p=>{
+    const li = document.createElement("li");
+    const isPlaceholder = p.name.startsWith("Add ");
+    li.innerHTML = `<span class="${isPlaceholder ? 'placeholder' : ''}">${p.name}</span><span class="role">${p.role}</span>`;
+    el.appendChild(li);
+  });
+}
+ 
+function fillMembers(containerId, people){
+  const el = document.getElementById(containerId);
+  people.forEach(p=>{
+    const row = document.createElement("div");
+    row.className = "member";
+    row.innerHTML = `
+      <img class="headshot" src="${p.photo}" alt="Headshot of ${p.name}" onerror="this.style.visibility='hidden'">
+      <div class="member-text">
+        <div class="member-name${p.name.startsWith('Add ') ? ' placeholder' : ''}">${p.name}</div>
+        <div class="member-role">${p.role}</div>
+        <p class="member-bio">${p.bio}</p>
+      </div>`;
+    el.appendChild(row);
+  });
+}
+ 
+function renderSponsor(){
+  if(!SPONSOR.show) return;
+  document.getElementById("sponsor-block").hidden = false;
+  document.getElementById("sponsor-info").innerHTML = `
+    <div>This project is sponsored by <strong>${SPONSOR.org}</strong>.</div>
+    <div class="sponsor-contact">Contact: ${SPONSOR.contactName} — <a href="mailto:${SPONSOR.contactEmail}">${SPONSOR.contactEmail}</a></div>`;
+}
+ 
+fillMembers("members-list", MEMBERS);
+renderSponsor();
 fillRoleList("advisors-list", ADVISORS);
 fillRoleList("reviewers-list", REVIEWERS);
 

@@ -5,7 +5,7 @@
 /* Update this one line whenever you make changes to the site — it
    shows up in the footer of every page. Format is up to you, e.g.
    "September 22, 2026" or "9/22/2026". */
-const LAST_UPDATED = "September 22, 2026";
+const LAST_UPDATED = "October 23rd, 2026";
 
 function youtubeEmbed(url){
   const m = url.match(/(?:youtu\.be\/|v=|embed\/)([A-Za-z0-9_-]{11})/);
