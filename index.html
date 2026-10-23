@@ -33,13 +33,7 @@
   <section id="overview">
     <h2 class="section-title">Project overview</h2>
     <p>F.R.E.T (Flexible Real-Time Effects Terminal) is a guitar effects pedal that uses digital signal processing to apply real-time audio effects to an electric guitar signal. The pedal accepts a standard instrument-level input from an electric guitar, processes the signal digitally to apply one or more configurable effects, and outputs a single mono signal ready to feed directly into a guitar amplifier. This is a student-led engineering project, covering everything from circuit and signal-chain design through firmware, enclosure, and testing.</p>
-    <div class="signal-path">
-      <div class="node">Electric guitar</div>
-      <div class="wire"></div>
-      <div class="node">F.R.E.T (DSP)</div>
-      <div class="wire"></div>
-      <div class="node">Amplifier (mono)</div>
-    </div>
+    <img class="diagram" src="images/fret_signal_path.svg" alt="Diagram of an electric guitar connected to the F.R.E.T pedal, which connects to a guitar amplifier">
   </section>
 
   <section id="team">
@@ -78,9 +72,12 @@
    swap out the placeholders below with the real names. */
 
 const MEMBERS = [
-  { name: "Kenneth Abel", role: "Primary Role: Software. Secondary Roles: MCU/Peripheral Integration, Website.", photo: "images/Kenneth Headshot Zoomed.jpg", bio: "Add a two to three sentence bio." },
-  { name: "Ngoc Nguyen", role: "Primary Role: Analog Signal Chain. Secondary Roles: CAD, PCB Design.", photo: "images/Nghi Headshot.png", bio: "Add a two to three sentence bio." },
-  { name: "Benjamin Vargas", role: "Primary Role: Power Supply. Secondary Role: Protective Circuitry.", photo: "images/Benjamin Headshot.png", bio: "Add a two to three sentence bio." },
+  { name: "Kenneth Abel", role: "Primary Role: Software. Secondary Roles: MCU/Peripheral Integration, Website.", photo: "images/Kenneth Headshot Zoomed.jpg", 
+  bio: "Pursuing B.S in Electrical Engineering. Interested in embedded systems, real-time operating systems, and management." },
+  { name: "Ngoc Nguyen", role: "Primary Role: Analog Signal Chain. Secondary Roles: CAD, PCB Design.", photo: "images/Nghi Headshot.png", 
+  bio: "Pursuing B.S in Electrical Engineering." },
+  { name: "Benjamin Vargas", role: "Primary Role: Power Supply. Secondary Role: Protective Circuitry.", photo: "images/Benjamin Headshot.png", 
+  bio: "Pursuing B.S in Electrical Engineering." },
 ];
 
 // Set show to false to hide the sponsor section entirely.

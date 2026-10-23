@@ -53,10 +53,6 @@ section:last-of-type{border-bottom:none;}
 h2.section-title{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:30px;margin:0 0 22px;color:var(--text);}
 h3.block-title{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);font-weight:500;margin:0 0 4px;}
 
-.signal-path{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:28px 0 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;}
-.signal-path .node{border:1px solid var(--line);background:var(--panel);padding:12px 16px;border-radius:3px;color:var(--text);}
-.signal-path .wire{flex:0 0 32px;height:1px;background:var(--amber);position:relative;margin:0 2px;}
-.signal-path .wire::after{content:'';position:absolute;right:-1px;top:-3px;border:4px solid transparent;border-left-color:var(--amber);}
 
 .role-block{margin-bottom:30px;}
 .role-block:last-child{margin-bottom:0;}
@@ -105,3 +101,5 @@ footer{padding:32px 0 60px;color:var(--muted);font-size:13px;}
 @media(max-width:620px){
   .member{flex-direction:column;gap:14px;}
 }
+
+.diagram{display:block;width:100%;max-width:880px;height:auto;margin:28px 0 8px;}
